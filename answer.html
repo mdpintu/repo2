@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossword Puzzle #1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .crossword-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+        table {
+            border-collapse: collapse;
+            margin-right: 0px;
+        }
+        td {
+            border: 1px solid #de5356;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 20px;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .black-cell {
+            background-color: #de5356;
+            pointer-events: none;
+        }
+        .editable-cell {
+            cursor: pointer;
+            position: relative;
+        }
+        .editable-cell:focus {
+            background-color: #e0f7fa;
+            outline: none;
+        }
+        .clue-number {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 12px;
+            color: #555;
+            z-index: 2;
+            pointer-events: none;
+            background-color: #fff;
+            padding: 0 2px;
+        }
+        .highlight {
+            background-color: #ffff99;
+        }
+        .crossed-out {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .clues {
+    max-width: 500px;
+    margin-left: 35px;
+}
+        .clues h3 {
+            margin-bottom: 10px;
+        }
+        .clue-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .clue-list li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .table-wrapper {
+    padding: 25px;
+    background-color: #de5356;
+}
+.buttn-box {
+    margin-top: 30px;
+}
+    </style>
+</head>
+<body>
+    <h1>INCROSSWORD #1</h1>
+    <div class="crossword-container">
+        <div class="box-wrapper">
+            <div class="table-wrapper">
+            <table id="crossword-grid">
+                <!-- First Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="1-1" data-number="1" data-clues="1-down"><span class="clue-number"><sup>1</sup>B</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="2-2" data-number="2" data-clues="2-down"><span class="clue-number"><sup>2</sup>S</span></td>
+                    <td class="editable-cell" id="3-3" data-number="3" data-clues="3-down"><span class="clue-number">A</span></td>
+                    <td class="editable-cell" id="4-4" data-number="4" data-clues="4-down"><span class="clue-number">R</span></td>
+                    <td class="editable-cell" id="5-5" data-number="5" data-clues="5-down"><span class="clue-number">A</span></td>
+                    <td class="editable-cell" id="6-6" data-number="6" data-clues="6-down"><span class="clue-number">L</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Second Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="7-7" data-number="7" data-clues="7-down"><span class="clue-number">1</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="8-8" data-number="8" data-clues="8-down"><span class="clue-number">3</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Third Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="9-9" data-number="9" data-clues="9-down"><span class="clue-number">o</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="10-10" data-number="10" data-clues="10-down"><span class="clue-number">W</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Fourth Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="11-11" data-number="11" data-clues="11-down"><span class="clue-number">c</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="12-12" data-number="12" data-clues="12-down"><span class="clue-number">a</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Fifth Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="13-13" data-number="13" data-clues="13-down"><span class="clue-number">k</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="14-14" data-number="14" data-clues="14-down"><span class="clue-number">a</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="15-15" data-number="15" data-clues="15-down"><span class="clue-number"><sup>3</sup>N</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Sixth Row -->
+                <tr>
+                    <td class="editable-cell" id="17-17" data-number="17" data-clues="17-down"><span class="clue-number"><sup>4</sup>M</span></td>
+                    <td class="editable-cell" id="18-18" data-number="18" data-clues="18-down"><span class="clue-number">i</span></td>
+                    <td class="editable-cell" id="19-19" data-number="19" data-clues="19-down"><span class="clue-number">c</span></td>
+                    <td class="editable-cell" id="20-20" data-number="20" data-clues="20-down"><span class="clue-number">r</span></td>
+                    <td class="editable-cell" id="21-21" data-number="21" data-clues="21-down"><span class="clue-number">0</span></td>
+                    <td class="editable-cell" id="22-22" data-number="22" data-clues="22-down"><span class="clue-number">s</span></td>
+                    <td class="editable-cell" id="23-23" data-number="23" data-clues="23-down"><span class="clue-number">e</span></td>
+                    <td class="editable-cell" id="24-24" data-number="24" data-clues="24-down"><span class="clue-number">r</span></td>
+                    <td class="editable-cell" id="25-25" data-number="25" data-clues="25-down"><span class="clue-number">v</span></td>
+                    <td class="editable-cell" id="26-26" data-number="26" data-clues="26-down"><span class="clue-number">i</span></td>
+                    <td class="editable-cell" id="27-27" data-number="27" data-clues="27-down"><span class="clue-number">c</span></td>
+                    <td class="editable-cell" id="28-28" data-number="28" data-clues="28-down"><span class="clue-number">e</span></td>
+                    <td class="editable-cell" id="29-29" data-number="29" data-clues="29-down"><span class="clue-number">s</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Seventh Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="30-30" data-number="30" data-clues="30-down"><span class="clue-number">h</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="31-31" data-number="31" data-clues="31-down"><span class="clue-number">V</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="32-32" data-number="32" data-clues="32-down"><span class="clue-number"><sup>5</sup>G</span></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="33-33" data-number="33" data-clues="33-down"><span class="clue-number"><sup>6</sup>A</span></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Eighth Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="34-34" data-number="34" data-clues="34-down"><span class="clue-number"><sup>7</sup> A</span></td>
+                    <td class="editable-cell" id="35-35" data-number="35" data-clues="35-down"><span class="clue-number">I</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="36a-36a" data-number="36" data-clues="36-down"><span class="clue-number"><sup>8</sup> C</span></td>
+                    <td class="editable-cell" id="36-36" data-number="36" data-clues="36-down"><span class="clue-number">o</span></td>
+                    <td class="editable-cell" id="37-37" data-number="36" data-clues="36-down"><span class="clue-number">l</span></td>
+                    <td class="editable-cell" id="38-38" data-number="36" data-clues="36-down"><span class="clue-number">l</span></td>
+                    <td class="editable-cell" id="39-39" data-number="36" data-clues="36-down"><span class="clue-number">a</span></td>
+                    <td class="editable-cell" id="40-40" data-number="36" data-clues="36-down"><span class="clue-number">b</span></td>
+                    <td class="editable-cell" id="41-41" data-number="36" data-clues="36-down"><span class="clue-number">F</span></td>
+                    <td class="editable-cell" id="42-42" data-number="36" data-clues="36-down"><span class="clue-number">i</span></td>
+                    <td class="editable-cell" id="43-43" data-number="36" data-clues="36-down"><span class="clue-number">l</span></td>
+                    <td class="editable-cell" id="44-44" data-number="36" data-clues="36-down"><span class="clue-number">e</span></td>
+                    <td class="editable-cell" id="45-45" data-number="36" data-clues="36-down"><span class="clue-number">s</span></td>
+                </tr>
+                <!-- Ninth Row -->
+                <tr>
+                    <td class="black-cell"></td>  
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="46-46" data-number="36" data-clues="36-down"><span class="clue-number">i</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="47-47" data-number="36" data-clues="36-down"><span class="clue-number">S</span></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="48-48" data-number="36" data-clues="36-down"><span class="clue-number">P</span></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Tenth Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="49-49" data-number="36" data-clues="36-down"><span class="clue-number">n</span></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="50-50" data-number="36" data-clues="36-down"><span class="clue-number">D</span></td>
+                    <td class="black-cell"></td>
+                </tr>
+                <!-- Eleven Row -->
+                <tr>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="black-cell"></td>
+                    <td class="editable-cell" id="51-51" data-number="36" data-clues="36-down"><span class="clue-number"><sup>9</sup> D</span></td>
+                    <td class="editable-cell" id="52-52" data-number="36" data-clues="36-down"><span class="clue-number">e</span></td>
+                    <td class="editable-cell" id="53-53" data-number="36" data-clues="36-down"><span class="clue-number">v</span></td>
+                    <td class="editable-cell" id="54-54" data-number="36" data-clues="36-down"><span class="clue-number">O</span></td>
+                    <td class="editable-cell" id="55-55" data-number="36" data-clues="36-down"><span class="clue-number">p</span></td>
+                    <td class="editable-cell" id="56-56" data-number="36" data-clues="36-down"><span class="clue-number">s</span></td>
+                    <td class="black-cell"></td>
+                </tr>
+            </table>
+            </div>
+
+            <div class="buttn-box">
+                <button type="button" class="btn btn-outline-primary">Click Me!</button>
+            </div>
+        </div>
+        
+        
+        <div class="clues">
+            <h3>Across</h3>
+            <ul class="clue-list">
+                <li id="2-across">2. Flagship Haryana initiative for proactive service delivery</li>
+                <li id="4-across">4. Framework enabling modular design in software like SATHI</li>
+                <li id="5-across">7. Technology that powers predictive governance and chatbots</li>
+                <li id="8-across">8. Collaboration tools for government file management</li>
+                <li id="9-across">9. For faster development and deployment of digital platforms</li>
+                
+            </ul>
+            <h3>Down</h3>
+            <ul class="clue-list">
+                <li id="1-down">1. Ensures secure record-keeping in land records and contracts</li>
+                <li id="3-down">2. Website hosting service ensuring scalability and security</li>
+                <li id="5-down">3. National e-Vidhan Application for legislative digitization</li>
+                <li id="6-down">5. Used in disaster management for mapping and planning</li>
+                <li id="7-down">6. Aadhaar-enabled Public Distribution System for ration distribution</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // Array to store correct answers
+        const correctAnswers = {
+            "1-down": "LOW",
+            "2-across": "OLD",
+            "3-down": "DOLPHIN",
+            "4-across": "ORANGE",
+            "5-down": "COFFEE",
+            "5-across": "COD",
+            "6-down": "DRY",
+            "7-across": "TIGER",
+            "8-down": "RAIN",
+            "9-across": "KNIFE",
+            "10-across": "LEAF",
+            "11-across": "BEE"
+        };
+
+        // Function to highlight cells corresponding to a clue
+        function highlightCells(clueId) {
+            clearHighlights();
+            document.querySelectorAll(`[data-clues*="${clueId}"]`).forEach(cell => {
+                cell.classList.add("highlight");
+            });
+        }
+
+        // Function to clear all highlights
+        function clearHighlights() {
+            document.querySelectorAll(".highlight").forEach(cell => {
+                cell.classList.remove("highlight");
+            });
+        }
+
+        // Function to check answers
+        function checkAnswers() {
+            Object.keys(correctAnswers).forEach(clueId => {
+                const answer = correctAnswers[clueId];
+                let userAnswer = "";
+                document.querySelectorAll(`[data-clues*="${clueId}"]`).forEach(cell => {
+                    userAnswer += cell.textContent.trim().toUpperCase();
+                });
+                if (userAnswer === answer) {
+                    document.getElementById(clueId).classList.add("crossed-out");
+                } else {
+                    document.getElementById(clueId).classList.remove("crossed-out");
+                }
+            });
+        }
+
+        // Add event listeners for all editable cells
+        document.querySelectorAll(".editable-cell").forEach(cell => {
+            cell.setAttribute("contenteditable", "true");
+
+            // Restrict input to single uppercase letter
+            cell.addEventListener("input", function () {
+                this.textContent = this.textContent.toUpperCase().substring(0, 1);
+                checkAnswers();
+            });
+        });
+
+        // Add event listeners for all clues
+        document.querySelectorAll(".clue-list li").forEach(clue => {
+            clue.addEventListener("click", function () {
+                highlightCells(this.id);
+            });
+        });
+    </script>
+</body>
+</html>
